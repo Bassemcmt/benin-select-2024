@@ -41,8 +41,7 @@ jobs:
                 token  = Sys.getenv("SHINYAPPS_TOKEN"),
                 secret = Sys.getenv("SHINYAPPS_SECRET")
               )'
-
-  
+		
     - name: Deploy to shinyapps.io
       run: |
         R -e 'rsconnect::deployApp(
@@ -51,4 +50,3 @@ jobs:
           account = "bassemurm"
         )'
 
-		
