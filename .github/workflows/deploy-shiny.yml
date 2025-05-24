@@ -24,12 +24,12 @@ jobs:
 
     - name: Install R packages
       run: |
-    R -e 'install.packages(c(
-      "rsconnect","shiny","tidyverse","lubridate","ggplot2","DT","png","ggiraph",
-      "RColorBrewer","readr","shinythemes","shinyWidgets","shinymanager","formattable",
-      "writexl","WriteXLS","rpivotTable","htmlwidgets","shinyjs","clipr","rvest",
-      "shinydashboard","ggrepel","readxl","plotly","shinyalert"
-    ))'
+        R -e 'install.packages(c(
+          "rsconnect","shiny","tidyverse","lubridate","ggplot2","DT","png","ggiraph",
+          "RColorBrewer","readr","shinythemes","shinyWidgets","shinymanager","formattable",
+          "writexl","WriteXLS","rpivotTable","htmlwidgets","shinyjs","clipr","rvest",
+          "shinydashboard","ggrepel","readxl","plotly","shinyalert"
+        ))'
 
 
     - name: Configure shinyapps.io
