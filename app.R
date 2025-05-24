@@ -26,8 +26,6 @@ library(ggrepel)
 library(readxl)
 library(plotly)
 library(shinyalert)
-options(shiny.host='0.0.0.0')
-options(shiny.port=80)
 inactivity <- "function idleTimer() {
 var t = setTimeout(logout, 120000);
 window.onmousemove = resetTimer; // catches mouse movements

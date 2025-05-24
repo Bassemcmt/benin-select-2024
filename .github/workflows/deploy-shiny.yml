@@ -26,7 +26,7 @@ jobs:
       run: |
         R -e 'install.packages(c(
           "rsconnect","shiny","tidyverse","lubridate","ggplot2","DT","png","ggiraph",
-          "RColorBrewer","readr","shinyWidgets","shinymanager","formattable","writexl",
+          "RColorBrewer","readr",","shinythemes","shinyWidgets","shinymanager","formattable","writexl",
           "WriteXLS","rpivotTable","htmlwidgets","shinyjs","clipr","rvest",
           "shinydashboard","ggrepel","readxl","plotly","shinyalert"
         ))'
