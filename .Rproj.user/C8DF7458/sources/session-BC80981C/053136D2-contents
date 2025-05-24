@@ -1,0 +1,40 @@
+decl <- read_excel("data/Declarations_SYDONIA_2024.xlsx") %>%
+  mutate(DATE_ENREGISTREMENT = as.Date(DATE_ENREGISTREMENT))
+cont <- read_excel("data/Contre_Ecritures_2023_2024.xlsx") %>%
+  mutate(
+    NUMDEC = paste0(ANNEE, "-", BUREAU_D, "-",
+                    substr(NUM_DECL,1,1),"-",substr(NUM_DECL,3,8))
+  ) %>%
+  filter(ANNEE=="2024")
+bc <- read_excel("data/Bc_2024.xlsx") %>%
+  select(IFU_IMPORTATEUR,Ref_dec,Diff_Taxes)
+
+droits_comp_dec <- cont %>%
+  group_by(NUMDEC) %>%
+  summarise(tot_DC = sum(DC), .groups="drop")
+
+full_data <- decl %>%
+  left_join(droits_comp_dec, by=c("REFERENCE_DECLARATION"="NUMDEC")) %>%
+  left_join(bc,             by=c("REFERENCE_DECLARATION"="Ref_dec")) %>%
+  mutate(
+    tot_DC     = replace_na(tot_DC,   0),
+    Diff_Taxes = replace_na(Diff_Taxes, 0),
+    SH2        = substr(NOMENCLATURE, 1, 2),
+    SH4        = substr(NOMENCLATURE, 1, 4),
+    SH6        = substr(NOMENCLATURE, 1, 6),
+    DEC = if_else(
+      CONTRE_ÉCRITURE == "OUI",
+      "Non conforme",
+      "Conforme",
+      missing = "Conforme"
+    ),
+    AVD        = if_else(Diff_Taxes > 10000,      "Non conforme", "Conforme"),
+    DCO        = case_when(
+      tot_DC > 0 ~ "Non Conforme",
+      TRUE       ~ "Conforme"
+    ),
+    Conformité = if_else(DEC=="Conforme" & AVD=="Conforme" & DCO=="Conforme",
+                         "Conforme","Non Conforme")
+  )
+
+df <- full_data

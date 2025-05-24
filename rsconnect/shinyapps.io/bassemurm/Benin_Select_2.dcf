@@ -1,0 +1,13 @@
+name: Benin_Select_2
+title: Benin_Select_2
+username: bassemurm
+account: bassemurm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14812267
+bundleId:
+url: https://bassemurm.shinyapps.io/Benin_Select_2/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: data_import.R

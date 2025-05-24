@@ -1,0 +1,24 @@
+# Install missing packages
+required_packages <- c("shiny", "shinydashboard", "tidyverse", 
+                       "readxl", "plotly", "DT", "shinymanager",
+                       "future", "promises")
+install.packages(setdiff(required_packages, rownames(installed.packages())))
+
+# Deploy to shinyapps.io
+rsconnect::setAccountInfo(
+  name = "bassemurm",
+  token = "B731AFFC130766CB5F3C0B62311CD0F4",
+  secret = ""
+)
+## 
+rsconnect::deployApp(
+  appDir = ".",
+  appName = "BeninCustoms",
+  appTitle = "Benin Customs Analysis",
+  account = "your-account-name",
+  forceUpdate = TRUE,
+  # Resource allocation
+  appFiles = c("app.R", "data/"),
+  appPrimaryDoc = "app.R",
+  size = "xlarge"  # Critical for large datasets
+)
