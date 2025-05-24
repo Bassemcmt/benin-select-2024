@@ -37,7 +37,7 @@ jobs:
         SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
       run: |
         R -e 'rsconnect::setAccountInfo(
-                name   = "Bassemcmt",
+                name   = "bassemurm",
                 token  = Sys.getenv("SHINYAPPS_TOKEN"),
                 secret = Sys.getenv("SHINYAPPS_SECRET")
               )'
@@ -47,6 +47,6 @@ jobs:
         R -e 'rsconnect::deployApp(
                 appDir  = ".",
                 appName = "benin-select-2024",
-                account = "Bassemcmt"
-              )'
+                account = "bassemurm"
 
+		),
