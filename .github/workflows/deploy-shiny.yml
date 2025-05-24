@@ -43,13 +43,12 @@ jobs:
               )'
 
   
-        - name: Deploy to shinyapps.io
+            - name: Deploy to shinyapps.io
       run: |
         R -e 'rsconnect::deployApp(
           appDir  = ".",
           appName = "benin-select-2024",
           account = "bassemurm"
         )'
-
 
 		
