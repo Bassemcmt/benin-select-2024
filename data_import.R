@@ -2,7 +2,7 @@ library(readxl)
 library(dplyr)
 library (plotly)
 library(rsconnect)
-data <- read_excel("data/Declarations_SYDONIA_2024.xlsx", 
+data <- read_excel("data/dec_2024.xlsx", 
                    col_types = c("numeric", "text", "text", 
                                  "date", "date", "date", "text", "text", 
                                  "text", "text", "text", "text", "text", 
@@ -17,7 +17,7 @@ data <- read_excel("data/Declarations_SYDONIA_2024.xlsx",
 #library(readxl)
 #View(Copy_of_De_clarations_enregistre_es_en_2023_Extrait_le_18_04_2024_11h57)View(data)
 data$DATE_ENREGISTREMENT <- as.Date(data$DATE_ENREGISTREMENT)
-Droits_compromis <- read_excel("data/CONTRE_ECRITURES_2023_2024.xlsx")
+Droits_compromis <- read_excel("data/ce_2023_2024.xlsx")
 Droits_compromis$NUMDEC <- paste0(Droits_compromis$ANNEE,"-",Droits_compromis$BUREAU_D,"-",substr(Droits_compromis$NUM_DECL, 1, 1), "-", substr(Droits_compromis$NUM_DECL, 3, 8))
 Droits_compromis<-filter(Droits_compromis,Droits_compromis$ANNEE=='2024')
 AVD <- read_excel("data/bc_2024.xlsx")
