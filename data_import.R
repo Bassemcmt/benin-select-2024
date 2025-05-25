@@ -20,7 +20,7 @@ data$DATE_ENREGISTREMENT <- as.Date(data$DATE_ENREGISTREMENT)
 Droits_compromis <- read_excel("data/CONTRE_ECRITURES_2023_2024.xlsx")
 Droits_compromis$NUMDEC <- paste0(Droits_compromis$ANNEE,"-",Droits_compromis$BUREAU_D,"-",substr(Droits_compromis$NUM_DECL, 1, 1), "-", substr(Droits_compromis$NUM_DECL, 3, 8))
 Droits_compromis<-filter(Droits_compromis,Droits_compromis$ANNEE=='2024')
-AVD <- read_excel("data/Bc_2024.xlsx")
+AVD <- read_excel("data/bc_2024.xlsx")
 AVD<- select(AVD,IFU_IMPORTATEUR,Ref_dec,Diff_Taxes)
 Droits_compromis_dec<- select(Droits_compromis,NUMDEC,DC) %>% group_by(NUMDEC) %>% summarise(tot_DC=sum(DC))
 
